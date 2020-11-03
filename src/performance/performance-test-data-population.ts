@@ -219,9 +219,23 @@ const createUsersInGroupInChallenge = async () => {
 };
 
 // This function creates Challenges, where 'numberOfChallenges' is parameter defined by the user
-const createChallenges = async () => {
+const createIsolatedChallenges = async () => {
+    let challengeId = '';
+    for (let i = 1; i <= numberOfChallenges; i++) {
+      challengeName = 'challengeName ' + ID().toString();
+  
+      const response = await createChallangeMutation(challengeName);
+      challengeId = response.body.data.createChallenge.id;
+      console.log(
+        `Challenge with name: '${response.body.data.createChallenge.name}' and id: '${response.body.data.createChallenge.id}', is created`
+      );
+    }
+    return parseFloat(challengeId);
+  };
+
+// This function creates Challenges, and supports 'createPerformanceTestData()'
+const createChallengesPerformance = async () => {
   let challengeId = '';
-  for (let i = 1; i <= numberOfChallenges; i++) {
     challengeName = 'challengeName ' + ID().toString();
 
     const response = await createChallangeMutation(challengeName);
@@ -229,7 +243,6 @@ const createChallenges = async () => {
     console.log(
       `Challenge with name: '${response.body.data.createChallenge.name}' and id: '${response.body.data.createChallenge.id}', is created`
     );
-  }
   return parseFloat(challengeId);
 };
 
@@ -237,8 +250,7 @@ const createChallenges = async () => {
 const createPerformanceTestData = async () => {
   // Create Challanges
   for (let i = 1; i <= numberOfChallenges; i++) {
-    let responseChallengeId = await createChallenges();
-    // console.log(`Challenge with Id: ${responseChallengeId} is created`);
+    let responseChallengeId = await createChallengesPerformance();
 
     // Create Groups on Challenges
     if (
@@ -314,7 +326,7 @@ const addUsersToChallengePopulation = async () => {
 };
 
 //createUsers();
-//createChallenges();
+//createIsolatedChallenges
 //createGroupSOnEcoverse();
 //addUsersToEcoverseGroups();
 //addUsersToChallengePopulation();

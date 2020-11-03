@@ -5,7 +5,7 @@ The functions defined in `performance-test-data-population.ts` allows you to aut
 - Use the different functions, they should be commented out or not (on the bottom of the page).
   ```
   //createUsers();
-  //createChallenges();
+  //createIsolatedChallenges();
   //createGroupSOnEcoverse();
   //addUsersToEcoverseGroups();
   //addUsersToChallengePopulation();
@@ -16,7 +16,7 @@ The functions defined in `performance-test-data-population.ts` allows you to aut
 - Following entities could be populated:
   - `createUsers();` - adds `n` number of **Users** specified in parameter:
     - `let numberOfUsers = 2;`
-  - `createChallenges();` - adds `n` number of **Challenges** specified in parameter:
+  - `createIsolatedChallenges();` - adds `n` number of **Challenges** specified in parameter:
     - `let numberOfChallenges = 1;`
   - `createGroupSOnEcoverse();` - creates `n` number of **Group on Ecoverse** level
   - `addUsersToEcoverseGroups();` - adds `n` number of already created **Users** on specific **EcoverseGroup** with the following parameters for groupId and userIds:
